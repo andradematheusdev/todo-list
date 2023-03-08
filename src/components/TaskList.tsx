@@ -1,22 +1,44 @@
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import { Avatar, IconButton, ListItemAvatar, ListItemIcon } from "@mui/material";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import { useContext } from "react";
+import { AiOutlineDelete } from "react-icons/ai";
+import { Context } from "../contexts/TaskContext";
 
-export default function BasicList() {
+interface ITaskListProps {
+  data: string[] | null;
+}
+
+const TaskList = ({ data }: ITaskListProps) => {
+  const {tasks, setTasks} = useContext(Context);
+  function deleteTask(index: number) {
+      setTasks(tasks.splice(index, 1));
+  }
   return (
-    <Box sx={{ width: '100%'}}>
+    <Box sx={{ width: "100%" }}>
       <nav aria-label="secondary mailbox folders">
         <List>
-          <ListItem disablePadding>
-            <ListItemText primary="Item 1" />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemText primary="Item 2" />
-          </ListItem>
+          {data?.map((task, index) => {
+            return (
+              <ListItem
+                secondaryAction={
+                  <IconButton edge="end" aria-label="delete" onClick={() => deleteTask(index)}>
+                    <AiOutlineDelete />
+                  </IconButton>
+                }
+                key={index}
+              >
+                <ListItemText primary={task} />
+                <ListItemIcon />
+              </ListItem>
+            );
+          })}
         </List>
       </nav>
     </Box>
   );
-}
+};
+
+export default TaskList;
