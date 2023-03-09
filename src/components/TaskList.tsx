@@ -38,7 +38,6 @@ const TaskList = ({ data }: ITaskListProps) => {
                 }
                 key={index}
               >
-                <ListItemText primary={index} />
                 <ListItemText primary={task} />
                 <ListItemIcon />
               </ListItem>

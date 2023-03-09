@@ -34,7 +34,7 @@ function App() {
         <div className="add-input">
           <TextField
             id="task"
-            label="Adicionar"
+            label="Nova Tarefa"
             variant="outlined"
             className="task-name"
             onChange={
