@@ -49,9 +49,6 @@ function App() {
         <div>
           <TaskList data={ tasks } />
         </div>
-        <div>
-          [{tasks?.join(', ')}]
-        </div>
       </div>
     </div>
   );

@@ -12,16 +12,18 @@ interface ITaskListProps {
 }
 
 const TaskList = ({ data }: ITaskListProps) => {
-  const {tasks, setTasks} = useContext(Context);
+  const { tasks, setTasks } = useContext(Context);
 
   function deleteTask(index: number) {
-    // ! NOT WORKING, NEED FIXING
-    // if(tasks){
-    //   const newArray = [...tasks.splice(index, 1)]
-    //   setTasks(newArray);
-    // }
+    if (tasks) {
+      setTasks(
+        () => {
+          return tasks.filter((v: string, i: number) => i !== index)
+        }
+      );
+    }
   }
-  
+
   return (
     <Box sx={{ width: "100%" }}>
       <nav aria-label="secondary mailbox folders">
