@@ -13,9 +13,11 @@ interface ITaskListProps {
 
 const TaskList = ({ data }: ITaskListProps) => {
   const {tasks, setTasks} = useContext(Context);
+
   function deleteTask(index: number) {
-      setTasks(tasks.splice(index, 1));
+      setTasks(tasks?.splice(index, 1));
   }
+  
   return (
     <Box sx={{ width: "100%" }}>
       <nav aria-label="secondary mailbox folders">
@@ -24,12 +26,13 @@ const TaskList = ({ data }: ITaskListProps) => {
             return (
               <ListItem
                 secondaryAction={
-                  <IconButton edge="end" aria-label="delete" onClick={() => deleteTask(index)}>
+                  <IconButton edge="end" aria-label="delete" onClick={() => deleteTask(index)} title={`index: ${index}`}>
                     <AiOutlineDelete />
                   </IconButton>
                 }
                 key={index}
               >
+                <ListItemText primary={index} />
                 <ListItemText primary={task} />
                 <ListItemIcon />
               </ListItem>

@@ -9,8 +9,17 @@ function App() {
   const {tasks, setTasks} = useContext(Context);
 
   function addTask(){
-    setTasks([...tasks, newTask]);
-    setNewTask("");
+    if(tasks){
+      setTasks([...tasks, newTask]);
+      setNewTask("");
+    }else{
+      if(newTask){
+        setTasks([newTask]);
+        setNewTask("");
+      }else{
+        window.alert("Digite uma tarefa!");
+      }
+    }
   }
 
   function submitTask(event: React.KeyboardEvent<HTMLDivElement>){
