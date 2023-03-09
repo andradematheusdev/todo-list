@@ -15,7 +15,11 @@ const TaskList = ({ data }: ITaskListProps) => {
   const {tasks, setTasks} = useContext(Context);
 
   function deleteTask(index: number) {
-      setTasks(tasks?.splice(index, 1));
+    // ! NOT WORKING, NEED FIXING
+    // if(tasks){
+    //   const newArray = [...tasks.splice(index, 1)]
+    //   setTasks(newArray);
+    // }
   }
   
   return (
