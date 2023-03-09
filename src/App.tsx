@@ -12,10 +12,12 @@ function App() {
     if(tasks){
       setTasks([...tasks, newTask]);
       setNewTask("");
+      localStorage.setItem("tasks", JSON.stringify(tasks));
     }else{
       if(newTask){
         setTasks([newTask]);
         setNewTask("");
+        localStorage.setItem("tasks", JSON.stringify(tasks));
       }else{
         window.alert("Digite uma tarefa!");
       }
