@@ -1,5 +1,5 @@
 import { Button, TextField } from "@mui/material";
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 import { useContext, useEffect, useState } from "react";
 import TaskList from "./components/TaskList";
 import { Context } from "./contexts/TaskContext";
@@ -48,19 +48,17 @@ function App() {
             onKeyDown={(e) => submitTask(e)
             }
           />
-          <Button variant="contained" onClick={addTask} disableElevation><AiOutlinePlusCircle size={24} /></Button>
+          <Button variant="contained" onClick={addTask} disableElevation>ADICIONAR</Button>
         </div>
         <div>
           <TaskList data={ tasks } />
         </div>
-        <div style={{border: 0, borderTop: 1, borderStyle: 'solid'}}>
-          <div>Local Storage: {localStorage.getItem("tasks")}</div>
-          <div>Task Array: ["{tasks?.join(', ')}"]</div>
-          <div>New Task: {newTask}</div>
-          <div>
-            <Button variant="contained" color="error" onClick={clearLocalStorage} disableElevation>LIMPAR</Button>
-          </div>
-        </div>
+        <footer>
+            <Button variant="contained" color="error" onClick={clearLocalStorage} disableElevation>
+              <AiOutlineDelete size={18} style={{marginLeft: 8}} />
+              Limpar Lista
+            </Button>
+        </footer>
       </div>
     </div>
   );
