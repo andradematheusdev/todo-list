@@ -30,6 +30,11 @@ function App() {
     }
   }
 
+  function clearLocalStorage(){
+    localStorage.clear();
+    location.reload();
+  }
+
   return (
     <div className="App">
       <div className="wrapper">
@@ -50,6 +55,12 @@ function App() {
         </div>
         <div>
           <TaskList data={ tasks } />
+        </div>
+        <div>
+          {localStorage.getItem("tasks")}
+          <div>
+            <Button variant="contained" color="error" onClick={clearLocalStorage} disableElevation>LIMPAR</Button>
+          </div>
         </div>
       </div>
     </div>
