@@ -57,7 +57,8 @@ function App() {
           <TaskList data={ tasks } />
         </div>
         <div>
-          {localStorage.getItem("tasks")}
+          <div>Local Storage: {localStorage.getItem("tasks")}</div>
+          <div>Task Array: {tasks}</div>
           <div>
             <Button variant="contained" color="error" onClick={clearLocalStorage} disableElevation>LIMPAR</Button>
           </div>
