@@ -53,12 +53,16 @@ function App() {
         <div>
           <TaskList data={ tasks } />
         </div>
+        {
+        tasks ? 
         <footer>
-            <Button variant="contained" color="error" onClick={clearLocalStorage} disableElevation>
-              <AiOutlineDelete size={18} style={{marginLeft: 8}} />
+            <Button variant="contained" color="error" onClick={clearLocalStorage} className="delete-all" disableElevation>
+              <AiOutlineDelete size={18} style={{marginRight: 8}} />
               Limpar Lista
             </Button>
         </footer>
+        : ""
+      }
       </div>
     </div>
   );
